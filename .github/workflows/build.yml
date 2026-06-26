@@ -11,6 +11,9 @@ jobs:
     - name: Unzip files
       run: unzip PrivacySandbox_Project.zip -d myapp
 
+    - name: Fix Kotlin Code Automatically
+      run: sed -i 's/while (isActive)/while (serviceScope.isActive)/g' myapp/app/src/main/java/com/research/privacysandbox/service/SocksVpnService.kt
+
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
